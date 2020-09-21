@@ -20,17 +20,17 @@ Takes in a list of IP addresses in a text file format and outputsa json with inf
        
 <h2>Run:</h2>
 
-1. To run with existing sample input IP file:
+1. To run with existing sample input IP file:<br>
   <b>python IPMan.py input.txt</b>
 
-2. To run with a new input file:
+2. To run with a new input file:<br>
   <b>python IPMan.py input_filename.txt</b>
 
-3. To specify an input file and obtain <b>csv</b> output
+3. To specify an input file and obtain <b>csv</b> output:<br>
   <b>python IPMan.py input_filename.txt output_filename.csv</b>
 
-4. To specify both an input file and obtain <b>json</b> output
+4. To specify both an input file and obtain <b>json</b> output:<br>
   <b>python IPMan.py input_filename.txt output_filename.json</b> 
 
-5. To specify both an input file and and obtain outputs in <b>both</b> formats 
+5. To specify both an input file and obtain outputs in <b>both</b> formats:<br>
   <b>python IPMan.py input_filename.txt output_filename</b> 
