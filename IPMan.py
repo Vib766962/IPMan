@@ -12,7 +12,7 @@ print(custom_fig.renderText("IPMan"))
 print("\n")
 
 
-print("Welcome to IPMan bulk IP Checker. Your output will be saved to a file called 'WingChun.jpg if you haven't provided an output filename")
+print("Welcome to IPMan bulk IP Checker. Your output will be saved to files called 'WingChun' if you haven't provided an output filename")
 
 print("\n")
 
