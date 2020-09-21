@@ -26,6 +26,11 @@ Takes in a list of IP addresses in a text file format and outputsa json with inf
 2. To run with a new input file:
   <b>python IPMan.py input_filename.txt</b>
 
-3. To specify both an input file and an output file:
+3. To specify an input file and obtain <b>csv</b> output
+  <b>python IPMan.py input_filename.txt output_filename.csv</b>
+
+4. To specify both an input file and obtain <b>json</b> output
   <b>python IPMan.py input_filename.txt output_filename.json</b> 
-  
+
+5. To specify both an input file and and obtain outputs in <b>both</b> formats 
+  <b>python IPMan.py input_filename.txt output_filename</b> 
