@@ -2,6 +2,7 @@ import ipinfo
 import sys
 import json
 import time
+import pandas
 from pyfiglet import Figlet
 
 #Initial Banner and other text
@@ -22,11 +23,30 @@ if(len(sys.argv)==1):
 elif(len(sys.argv)==2):
     filename = sys.argv[1]
     outfile = "wingchun.json"
+    csv_filename = "wingchun.csv"
 elif(len(sys.argv)==3):
     filename = sys.argv[1]
     outfile = sys.argv[2]
+
+
 else:
     print("Too many parameters")
+
+if('.txt' in filename):
+    print("\n")
+else:
+    filename = filename + '.txt'
+
+if('.json' in outfile):
+    setting = 1
+elif('.csv' in outfile):
+    setting = 2
+    csv_filename = outfile
+else:
+    setting = 3
+    csv_filename = outfile+'.csv'
+    outfile = outfile+'.json'
+
 
 
 #API Access token settings
@@ -82,75 +102,38 @@ def IPMan(filename):
 
         output_list.append(dict(details.all))
 
-
-        #Code used to append data to list to make it feasible to paste directly into excel
-        if('city' in details.all.keys()):
-            ip.append(details.all['ip'])
-            city.append(details.all['city'])
-            region.append(details.all['region'])
-            country.append(details.all['country'])
-            loc.append(details.all['loc'])
-            if('org' in details.all.keys()):
-                org.append(details.all['org'])
-            else:
-                org.append('Unknown')
-                
-            if('postal' in details.all.keys()):
-                postal.append(details.all['postal'])
-            else:
-                postal.append('Unknown')    
-            
-            timezone.append(details.all['timezone'])
-            country_name.append(details.all['country_name'])
-            latitude.append(details.all['latitude'])
-            longitude.append(details.all['longitude'])
     print('\n')
 
-    #Writing to output file
-    with open(outfile, 'w') as fp:
-            json.dump(output_list, fp,indent=4)
+    
+    if(setting==1):   
+        #Writing to output JSON File
+        JsonOutput(output_list)
+    elif(setting==2):
+        #Writing to output CSV File
+        CsvOutput(output_list)
+    else:
+        JsonOutput(output_list)
+        CsvOutput(output_list)
+
+
+
+    
+
     print('Done')
     print("Greet what arrives, escort what leaves and rush upon loss of contact -IP Man\n")
 
+
+def JsonOutput(output_list):
+    with open(outfile, 'w') as fp:
+                json.dump(output_list, fp,indent=4)
+
+def CsvOutput(output_list):        
+    y = json.dumps(output_list)
+    x = pandas.read_json(y)
+    x.to_csv(csv_filename)
 
 
 #Function Call
 IPMan(filename)
 
-
-#Display data in format that can be copy pasted to excel column wise
-
-
-# for z in ip:
-#     print(z)
-    
-# for z in city:
-#     print(z)
-    
-# for z in region:
-#     print(z)
-    
-# for z in country:
-#     print(z)
-    
-# for z in loc:
-#     print(z)
-
-# for z in org:
-#     print(z)  
-    
-# for z in postal:
-#     print(z)
-    
-# for z in timezone:
-#     print(z)
-    
-# for z in country_name:
-#     print(z)
-    
-# for z in latitude:
-#     print(z)
-    
-# for z in longitude:
-#     print(z)
 

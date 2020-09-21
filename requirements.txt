@@ -2,3 +2,4 @@ ipinfo
 pyfiglet
 ipinfo
 pyfiglet
+pandas
